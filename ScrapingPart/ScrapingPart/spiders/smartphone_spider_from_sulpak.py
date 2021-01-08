@@ -2,6 +2,7 @@ import scrapy
 
 
 class SmartphonesSpider(scrapy.Spider):
+
     name = "smartphone"
 
     start_urls = [
@@ -20,7 +21,7 @@ class SmartphonesSpider(scrapy.Spider):
         'https://www.sulpak.kz/f/smartfoniy?page=13',
         'https://www.sulpak.kz/f/smartfoniy?page=14',
     ]
-
+    #@celery_app.task(bind=True, default_retry_delay=60 * 60)
     def parse(self, response):
         for smartphone in response.css('div.goods-tiles'):
             yield {

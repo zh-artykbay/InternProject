@@ -5,7 +5,7 @@ class SmartphonesSpider(scrapy.Spider):
     name = "smartphone2"
 
     start_urls = [
-        'https://www.mechta.kz/section/smartfony/',
+        'https://www.mechta.kz/sec tion/smartfony/',
     ]
 
     def parse(self, response):
