@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from MyProject.app.models import SulpakSmartphones, SulpakSmartphonesHistory
+
 
 def scrape(urls):
     chrome_options = Options()
@@ -21,21 +23,25 @@ def scrape(urls):
 
                     print(name.text)
                     print(price.text)
+
+                    try:
+                        smartphone = SulpakSmartphones.objects.get(name=name.text)
+                    except:
+                        smartphone = False
+
+                    if smartphone:
+                        if price.text != smartphone.current_price:
+                            smartphone.current_price = price.text
+                            smartphone.save()
+                            new_item_history = SulpakSmartphonesHistory(phone_id=smartphone.id, price=price.text)
+                            new_item_history.save()
+                    else:
+                        new_item = SulpakSmartphones(name=name.text, current_price=price.text)
+                        new_item.save()
+                        new_item_history = SulpakSmartphonesHistory(phone_id=new_item.id, price=price.text)
+                        new_item_history.save()
                 else:
                     break
 
         except Exception:
             driver.quit()
-"""urls = [
-    'https://www.sulpak.kz/f/smartfoniy',
-    'https://www.sulpak.kz/f/smartfoniy?page=2',
-    'https://www.sulpak.kz/f/smartfoniy?page=3',
-    'https://www.sulpak.kz/f/smartfoniy?page=4',
-    'https://www.sulpak.kz/f/smartfoniy?page=5',
-    'https://www.sulpak.kz/f/smartfoniy?page=6',
-    'https://www.sulpak.kz/f/smartfoniy?page=7',
-    'https://www.sulpak.kz/f/smartfoniy?page=8',
-    'https://www.sulpak.kz/f/smartfoniy?page=9',
-    'https://www.sulpak.kz/f/smartfoniy?page=10',
-]"""
-#scrape(urls)
