@@ -42,7 +42,7 @@ def scrape(urls):
                         if price.text != smartphone.current_price:
                             smartphone.current_price = price.text
                             smartphone.save()
-                            new_item_history = SulpakSmartphonesHistory(phone_id=smartphone.id, price=price.text)
+                            new_item_history = SulpakSmartphonesHistory(phone_id=smartphone, price=price.text)
                             new_item_history.save()
                     else:
                         new_item = SulpakSmartphones(name=name.text, current_price=price.text)
