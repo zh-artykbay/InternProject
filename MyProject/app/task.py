@@ -1,4 +1,4 @@
-from MyProject.app.scraperforsulpak import scrape
+from app.scraperforsulpak import scrape
 from MyProject.MyProject.celery import app
 
 
