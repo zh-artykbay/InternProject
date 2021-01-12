@@ -50,9 +50,6 @@ def scrape(urls):
             for item in count_items:
                 name = item.find_element_by_css_selector('a.ProductCard-Content h4')
                 price = item.find_element_by_css_selector('a.ProductCard-Content div.ProductCard-PriceAndCredit p.ProductPrice data')
-
-                print(name.text.strip())
-                print(price.text.strip())
                 name = name.text.strip()
                 price = price.text.strip()
 
