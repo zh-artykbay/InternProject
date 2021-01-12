@@ -28,14 +28,21 @@ def scrape(urls):
 
         try:
             count_items = WebDriverWait(driver, 10).until(lambda driver: driver.find_elements_by_css_selector('div.bx_catalog_item'))
+            #print(len(count_items))
+            #count_items = driver.find_elements_by_css_selector('div.goods-tiles div.product-container-right-side')
         except TimeoutError:
             print("Timeout Error")
             driver.quit()
 
         try:
             for item in count_items:
+                #username = item.find_element_by_xpath("//div[@class='bx_catalog_item_container gtm-impression-product']")
+                #username.get_attribute("data-product")
                 name = item.find_element_by_css_selector('div.bx_catalog_item_container div.bx-catalog-middle-part div.bx_catalog_item_title a')
                 price = item.find_element_by_css_selector('div.bx-catalog-right-part div.bx_catalog_item_price div.bx_price')
+
+                print(name.get_attribute("title").strip())
+                print(price.text.strip())
                 name = name.get_attribute("title").strip()
                 price = price.text.strip()
 

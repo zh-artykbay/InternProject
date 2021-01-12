@@ -15,7 +15,10 @@ def scrape(urls):
         driver.get(url)
 
         try:
+
             count_items = WebDriverWait(driver, 20).until(lambda driver: driver.find_elements_by_css_selector('div.goods-tiles div.product-container-right-side'))
+
+            #count_items = driver.find_elements_by_css_selector('div.goods-tiles div.product-container-right-side')
         except TimeoutError:
             print("Timeout Error")
             driver.quit()
@@ -27,10 +30,12 @@ def scrape(urls):
                 if item.find_element_by_css_selector('div.price-block div.price span'):
                     price = item.find_element_by_css_selector('div.price-block div.price span')
 
+                    print(name.text)
+                    print(price.text)
+
                     try:
                         smartphone = SulpakSmartphones.objects.get(name=name.text)
-                    except Exception as e:
-                        print(e)
+                    except:
                         smartphone = False
 
                     if smartphone:
