@@ -6,4 +6,4 @@ __pycache__/
 
 *.log
 
-.env.txt
+/InternProject/MyProject/MyProject/.env
