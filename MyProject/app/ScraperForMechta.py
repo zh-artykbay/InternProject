@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 #from app.models import SulpakSmartphones, SulpakSmartphonesHistory
 
 urls = [
-    'https://www.mechta.kz/section/smartfony',
+    'https://www.mechta.kz/section/smartfony/',
 ]
 
 def scrape(urls):
@@ -18,9 +18,9 @@ def scrape(urls):
         driver.get(url)
 
         try:
-            count_items = driver.find_element_by_xpath("//div[@class='bs3 br4px col-6']")
+            count_items = driver.find_element_by_xpath('//*[@id="q-app"]/div/div[1]/main/div/div[1]/div[5]/div/div/div/div[8]')
             #count_items = WebDriverWait(driver, 10).until(lambda driver: driver.find_elements_by_css_selector('div.bs3'))
-            print(count_items)
+            #print(count_items)
             #count_items = driver.find_elements_by_css_selector('div.goods-tiles div.product-container-right-side')
         except TimeoutError:
             print("Timeout Error")

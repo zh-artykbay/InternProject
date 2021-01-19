@@ -4,29 +4,17 @@ from selenium.webdriver.chrome.options import Options
 #from app.models import TechnodomSmartphones, TechnodomSmartphonesHistory
 
 urls = [
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=2',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=3',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=4',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=5',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=6',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=7',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=8',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=9',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=10',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=12',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=12',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=13',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=14',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=15',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=16',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=17',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=18',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=19',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=20',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=21',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=22',
-    'https://www.technodom.kz/smartfony-i-gadzhety/smartfony-i-telefony?page=23',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=2',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=3',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=4',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=5',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=6',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=7',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=8',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=9',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=10',
+    'https://www.technodom.kz/smartfony-i-gadzhety/gadzhety/smart-chasy?page=11',
 ]
 
 def scrape(urls):
@@ -51,10 +39,9 @@ def scrape(urls):
                 name = item.find_element_by_css_selector('a.ProductCard-Content h4')
                 price = item.find_element_by_css_selector('a.ProductCard-Content div.ProductCard-PriceAndCredit p.ProductPrice data')
 
-                #if name.text.strip():
-
-                    #print(name.text.strip())
-                    #print(int(price.text[:-2].replace(" ", "")))
+               """ if name.text.strip():
+                    print(name.text.strip())
+                    print(int(price.text[:-2].replace(" ", "")))"""
                 #name = name.text.strip()
                 #price = price.text.strip()
 

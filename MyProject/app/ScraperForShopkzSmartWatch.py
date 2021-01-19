@@ -4,16 +4,11 @@ from selenium.webdriver.chrome.options import Options
 #from app.models import ShopKzSmartphones, ShopKzSmartphonesHistory
 
 urls = [
-    'https://shop.kz/smartfony/smartfony-xiaomi/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/',
-    'https://shop.kz/smartfony/smartfony-xiaomi/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=2',
-    'https://shop.kz/smartfony/smartfony-xiaomi/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=3',
-    'https://shop.kz/smartfony/smartfony-samsung/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/',
-    'https://shop.kz/smartfony/smartfony-samsung/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=2',
-    'https://shop.kz/smartfony/smartfony-realme/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/',
-    'https://shop.kz/smartfony/smartfony-poco/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/',
-    'https://shop.kz/smartfony/smartfony-apple-iphone/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/',
-    'https://shop.kz/smartfony/smartfony-apple-iphone/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=2',
-    'https://shop.kz/smartfony/smartfony-meizu/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/',
+    'https://shop.kz/smart-chasy/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/',
+    'https://shop.kz/smart-chasy/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=2',
+    'https://shop.kz/smart-chasy/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=3',
+    'https://shop.kz/smart-chasy/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=4',
+
 ]
 
 def scrape(urls):
@@ -45,9 +40,9 @@ def scrape(urls):
                     p = int(p[1].strip().replace(" ", ""))
                 else:
                     p = int(p[0].strip().replace(" ", ""))
-                """print(name.get_attribute("title").strip())
-                print(p)
-                """#name = name.get_attribute("title").strip()
+                #print(name.get_attribute("title").strip())
+                #print(p)
+                #name = name.get_attribute("title").strip()
                 #price = price.text.strip().split('₸')
 
                 """try:

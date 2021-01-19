@@ -1,5 +1,5 @@
-from app.scraperforsulpak import scrape
-from MyProject.MyProject.celery import app
+from app.ScraperForSulpak import scrape
+from app.models import SulpakSmartphones, SulpakSmartphonesHistory
 
 
 urls = [
@@ -15,9 +15,4 @@ urls = [
     'https://www.sulpak.kz/f/smartfoniy?page=10',
 ]
 
-
-@app.task
-def scrape_One():
-    scrape(urls)
-    return
-
+scrape(urls, SulpakSmartphones, SulpakSmartphonesHistory)

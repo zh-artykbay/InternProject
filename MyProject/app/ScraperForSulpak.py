@@ -1,10 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
-from app.models import SulpakSmartphones, SulpakSmartphonesHistory
+from app.db_functions import check_item_is_exist, update_item_price, insert_item_to_table
 
 
-def scrape(urls):
+def scrape(urls, Table_name, History_table_name):
     chrome_options = Options()
     chrome_options.add_argument("--incognito")
     chrome_options.add_argument("--window-size=1920x1080")
@@ -16,42 +16,25 @@ def scrape(urls):
 
         try:
 
-            count_items = WebDriverWait(driver, 20).until(lambda driver: driver.find_elements_by_css_selector('div.goods-tiles div.product-container-right-side'))
+            count_items = WebDriverWait(driver, 10).until(lambda driver: driver.find_elements_by_css_selector('li.tile-container'))
 
-            #count_items = driver.find_elements_by_css_selector('div.goods-tiles div.product-container-right-side')
         except TimeoutError:
             print("Timeout Error")
             driver.quit()
 
         try:
             for item in count_items:
-                name = item.find_element_by_css_selector('h3.title')
 
-                if item.find_element_by_css_selector('div.price-block div.price span'):
-                    price = item.find_element_by_css_selector('div.price-block div.price span')
+                name = item.get_attribute("data-name")
+                price = item.get_attribute("data-price")
+                price = int(price[:-2])
+                image = item.find_element_by_css_selector("div.goods-photo img")
+                image_url = image.get_attribute("src")
 
-                    print(name.text)
-                    print(price.text)
-
-                    try:
-                        smartphone = SulpakSmartphones.objects.get(name=name.text)
-                    except:
-                        smartphone = False
-
-                    if smartphone:
-                        if price.text != smartphone.current_price:
-                            smartphone.current_price = price.text
-                            smartphone.save()
-                            new_item_history = SulpakSmartphonesHistory(phone_id=smartphone, price=price.text)
-                            new_item_history.save()
-                    else:
-                        new_item = SulpakSmartphones(name=name.text, current_price=price.text)
-                        new_item.save()
-
-                        new_item_history = SulpakSmartphonesHistory(phone_id=new_item, price=price.text)
-                        new_item_history.save()
+                if check_item_is_exist(name, Table_name):
+                    update_item_price(name, price, Table_name, History_table_name)
                 else:
-                    break
+                    insert_item_to_table(name, price, image_url, Table_name, History_table_name)
 
         except Exception as e:
             raise e

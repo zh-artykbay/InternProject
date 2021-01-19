@@ -20,7 +20,9 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('app/', include('app.urls')),
     url(r'^api/list$', views.get_list),
-    #url(r'^', include('app.urls')),
+    # url(r'^', include('MyProject.app.urls')),
+    url(r'^api/list/(?P<pk>[0-9]+)$', views.list_detail),
+   ]
 
-]
