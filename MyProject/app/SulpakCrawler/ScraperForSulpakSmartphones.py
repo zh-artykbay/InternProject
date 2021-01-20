@@ -1,4 +1,4 @@
-from app.ScraperForSulpak import scrape
+from app.SulpakCrawler.ScraperForSulpak import scrape
 from app.models import SulpakSmartphones, SulpakSmartphonesHistory
 
 

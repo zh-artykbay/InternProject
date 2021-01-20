@@ -28,13 +28,13 @@ def scrape(urls, Table_name, History_table_name):
                 name = item.get_attribute("data-name")
                 price = item.get_attribute("data-price")
                 price = int(price[:-2])
-                image = item.find_element_by_css_selector("div.goods-photo img")
-                image_url = image.get_attribute("src")
+                #image = item.find_element_by_css_selector("div.goods-photo img")
+                #image_url = image.get_attribute("src")
 
                 if check_item_is_exist(name, Table_name):
                     update_item_price(name, price, Table_name, History_table_name)
                 else:
-                    insert_item_to_table(name, price, image_url, Table_name, History_table_name)
+                    insert_item_to_table(name, price, Table_name, History_table_name)
 
         except Exception as e:
             raise e

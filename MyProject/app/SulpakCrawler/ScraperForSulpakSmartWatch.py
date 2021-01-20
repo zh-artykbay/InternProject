@@ -1,5 +1,5 @@
+from app.SulpakCrawler.ScraperForSulpak import scrape
 from app.models import SulpakWatch, SulpakWatchHistory
-from app.ScraperForSulpak import scrape
 
 urls = [
     'https://www.sulpak.kz/f/smart_chasiy',
