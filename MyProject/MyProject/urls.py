@@ -24,5 +24,7 @@ urlpatterns = [
     url(r'^api/list$', views.get_list),
     # url(r'^', include('MyProject.app.urls')),
     url(r'^api/list/(?P<pk>[0-9]+)$', views.list_detail),
+    url(r'^api/monitor$', views.get_list_of_monitor),
+    url(r'^api/phone$', views.get_list_of_phone),
    ]
 

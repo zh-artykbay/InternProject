@@ -16,7 +16,7 @@ from app.models import TV, SulpakTV, ShopKzTV, TechnodomTV
 from app.models import VRglass, SulpakVRglass, ShopKzVRglass, TechnodomVRglass
 
 
-def test(Sulpak_Item_table, Technodom_Item_table, Shopkz_Item_table, Item_table):
+def match_items(Sulpak_Item_table, Technodom_Item_table, Shopkz_Item_table, Item_table):
 
 
     sulpak_all_items = Sulpak_Item_table.objects.all()
@@ -45,8 +45,19 @@ def test(Sulpak_Item_table, Technodom_Item_table, Shopkz_Item_table, Item_table)
                 sulpak_new_item = None
 
             new_item = Item_table(name=technodom_item.name, sulpak_id=sulpak_new_item, shopkz_id=shopkz_new_item,
-                                  technodom_id=technodom_item)
+                                  technodom_id=technodom_item,
+                                  technodom_name=technodom_item.name, technodom_price=technodom_item.current_price,
+                                  )
             new_item.save()
+
+            if shopkz_new_item:
+                new_item.shopkz_name = shopkz_new_item.name
+                new_item.shopkz_price = shopkz_new_item.current_price
+                new_item.save()
+            if sulpak_new_item:
+                new_item.sulpak_name = sulpak_new_item.name
+                new_item.sulpak_price = sulpak_new_item.current_price
+                new_item.save()
 
 
 
@@ -65,9 +76,21 @@ def test(Sulpak_Item_table, Technodom_Item_table, Shopkz_Item_table, Item_table)
             else:
                 shopkz_new_item = None
 
-            new_item = Item_table(name=sulpak_item.name, sulpak_id=sulpak_item, shopkz_id=shopkz_new_item, technodom_id=technodom_new_item)
+
+            new_item = Item_table(name=sulpak_item.name, sulpak_id=sulpak_item, shopkz_id=shopkz_new_item,
+                                  technodom_id=technodom_new_item,
+                                  sulpak_name=sulpak_item.name, sulpak_price=sulpak_item.current_price
+                                  )
             new_item.save()
 
+            if shopkz_new_item:
+                new_item.shopkz_name = shopkz_new_item.name
+                new_item.shopkz_price = shopkz_new_item.current_price
+                new_item.save()
+            if technodom_new_item:
+                new_item.technodom_name = technodom_new_item.name
+                new_item.technodom_price = technodom_new_item.current_price
+                new_item.save()
 
 
     for shopkz_item in shopkz_all_items:
@@ -86,18 +109,29 @@ def test(Sulpak_Item_table, Technodom_Item_table, Shopkz_Item_table, Item_table)
                 sulpak_new_item = None
 
             new_item = Item_table(name=shopkz_item.name, sulpak_id=sulpak_new_item, shopkz_id=shopkz_item,
-                                  technodom_id=technodom_new_item)
+                                  technodom_id=technodom_new_item,
+                                  shopkz_name=shopkz_item.name, shopkz_price=shopkz_item.current_price)
             new_item.save()
 
+            if technodom_new_item:
+                new_item.technodom_name = technodom_new_item.name
+                new_item.technodom_price = technodom_new_item.current_price
+                new_item.save()
+            if sulpak_new_item:
+                new_item.sulpak_name = sulpak_new_item.name
+                new_item.sulpak_price = sulpak_new_item.current_price
+                new_item.save()
 
 
-test(Sulpak_Item_table=SulpakCamera, Shopkz_Item_table=ShopKzCamera, Technodom_Item_table=TechnodomCamera, Item_table=Camera)
-test(Sulpak_Item_table=SulpakHeadphone, Shopkz_Item_table=ShopKzHeadphone, Technodom_Item_table=TechnodomHeadphone, Item_table=Headphone)
-test(Sulpak_Item_table=SulpakMonitor, Shopkz_Item_table=ShopKzMonitor, Technodom_Item_table=TechnodomMonitor, Item_table=Monitor)
-test(Sulpak_Item_table=SulpakPowerbank, Shopkz_Item_table=ShopKzPowerbank, Technodom_Item_table=TechnodomPowerbank, Item_table=Powerbank)
-test(Sulpak_Item_table=SulpakPrinter, Shopkz_Item_table=ShopKzPrinter, Technodom_Item_table=TechnodomPrinter, Item_table=Printer)
-test(Sulpak_Item_table=SulpakWatch, Shopkz_Item_table=ShopKzWatch, Technodom_Item_table=TechnodomWatch, Item_table=Watch)
-test(Sulpak_Item_table=SulpakTablet, Shopkz_Item_table=ShopKzTablet, Technodom_Item_table=TechnodomTablet, Item_table=Tablet)
-test(Sulpak_Item_table=SulpakTV, Shopkz_Item_table=ShopKzTV, Technodom_Item_table=TechnodomTV, Item_table=TV)
-test(Sulpak_Item_table=SulpakVRglass, Shopkz_Item_table=ShopKzVRglass, Technodom_Item_table=TechnodomVRglass, Item_table=VRglass)
-test(Sulpak_Item_table=SulpakSmartphones, Shopkz_Item_table=ShopKzSmartphones, Technodom_Item_table=TechnodomSmartphones, Item_table=Smartphone)
+
+match_items(Sulpak_Item_table=SulpakSmartphones, Shopkz_Item_table=ShopKzSmartphones, Technodom_Item_table=TechnodomSmartphones, Item_table=Smartphone)
+match_items(Sulpak_Item_table=SulpakMonitor, Shopkz_Item_table=ShopKzMonitor, Technodom_Item_table=TechnodomMonitor, Item_table=Monitor)
+match_items(Sulpak_Item_table=SulpakPowerbank, Shopkz_Item_table=ShopKzPowerbank, Technodom_Item_table=TechnodomPowerbank, Item_table=Powerbank)
+match_items(Sulpak_Item_table=SulpakPrinter, Shopkz_Item_table=ShopKzPrinter, Technodom_Item_table=TechnodomPrinter, Item_table=Printer)
+match_items(Sulpak_Item_table=SulpakWatch, Shopkz_Item_table=ShopKzWatch, Technodom_Item_table=TechnodomWatch, Item_table=Watch)
+match_items(Sulpak_Item_table=SulpakTablet, Shopkz_Item_table=ShopKzTablet, Technodom_Item_table=TechnodomTablet, Item_table=Tablet)
+match_items(Sulpak_Item_table=SulpakTV, Shopkz_Item_table=ShopKzTV, Technodom_Item_table=TechnodomTV, Item_table=TV)
+match_items(Sulpak_Item_table=SulpakVRglass, Shopkz_Item_table=ShopKzVRglass, Technodom_Item_table=TechnodomVRglass, Item_table=VRglass)
+
+match_items(Sulpak_Item_table=SulpakCamera, Shopkz_Item_table=ShopKzCamera, Technodom_Item_table=TechnodomCamera, Item_table=Camera)
+match_items(Sulpak_Item_table=SulpakHeadphone, Shopkz_Item_table=ShopKzHeadphone, Technodom_Item_table=TechnodomHeadphone, Item_table=Headphone)

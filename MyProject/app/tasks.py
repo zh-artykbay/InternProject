@@ -32,7 +32,7 @@ from app.ShopkzCrawler.ScraperForShopkzPowerbank import scrape_Shopkz
 from app.ShopkzCrawler.ScraperForShopkzSmartWatch import scrape_Shopkz
 from app.ShopkzCrawler.ScraperForShopkzTablet import scrape_Shopkz
 
-from app.MatchingItems import test
+from app.MatchingItems import match_items
 
 from celery.utils.log import get_task_logger
 
@@ -56,4 +56,4 @@ def scrape_Sulpak():
 
 @shared_task(bind=True)
 def Matching_items():
-    return test()
+    return match_items()

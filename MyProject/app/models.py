@@ -325,24 +325,53 @@ class Monitor(models.Model):
     sulpak_id = models.ForeignKey(SulpakMonitor, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzMonitor, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomMonitor, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
+
 
 class Camera(models.Model):
     name = models.CharField(max_length=500, blank=False, default='')
     sulpak_id = models.ForeignKey(SulpakCamera, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzCamera, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomCamera, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
+
+
 
 class Headphone(models.Model):
     name = models.CharField(max_length=500, blank=False, default='')
     sulpak_id = models.ForeignKey(SulpakHeadphone, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzHeadphone, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomHeadphone, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
+
+
 
 class Powerbank(models.Model):
     name = models.CharField(max_length=500, blank=False, default='')
     sulpak_id = models.ForeignKey(SulpakPowerbank, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzPowerbank, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomPowerbank, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
 
 
 class Printer(models.Model):
@@ -350,18 +379,38 @@ class Printer(models.Model):
     sulpak_id = models.ForeignKey(SulpakPrinter, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzPrinter, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomPrinter, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
+
 
 class Smartphone(models.Model):
     name = models.CharField(max_length=500, blank=False, default='')
     sulpak_id = models.ForeignKey(SulpakSmartphones, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzSmartphones, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomSmartphones, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
+
 
 class Watch(models.Model):
     name = models.CharField(max_length=500, blank=False, default='')
     sulpak_id = models.ForeignKey(SulpakWatch, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzWatch, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomWatch, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
 
 
 class Tablet(models.Model):
@@ -369,6 +418,12 @@ class Tablet(models.Model):
     sulpak_id = models.ForeignKey(SulpakTablet, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzTablet, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomTablet, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
 
 
 class TV(models.Model):
@@ -376,9 +431,23 @@ class TV(models.Model):
     sulpak_id = models.ForeignKey(SulpakTV, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzTV, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomTV, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
+
 
 class VRglass(models.Model):
     name = models.CharField(max_length=500, blank=False, default='')
     sulpak_id = models.ForeignKey(SulpakVRglass, on_delete=models.CASCADE, null=True, blank=True)
     shopkz_id = models.ForeignKey(ShopKzVRglass, on_delete=models.CASCADE, null=True, blank=True)
     technodom_id = models.ForeignKey(TechnodomVRglass, on_delete=models.CASCADE, null=True, blank=True)
+    sulpak_name = models.CharField(max_length=500, blank=False, default='')
+    sulpak_price = models.IntegerField(null=True, blank=True)
+    technodom_name = models.CharField(max_length=500, blank=False, default='')
+    technodom_price = models.IntegerField(null=True, blank=True)
+    shopkz_name = models.CharField(max_length=500, blank=False, default='')
+    shopkz_price = models.IntegerField(null=True, blank=True)
+

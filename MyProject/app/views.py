@@ -7,18 +7,39 @@ from rest_framework.response import Response
 
 from app.models import SulpakSmartphones, SulpakSmartphonesHistory
 from app.serializers import SulpakSmartphonesSerializer
+from app.serializers import CombinedProductsSerializer, CombinedSmartphoneSerializer
 from rest_framework.decorators import api_view
+from app.models import Monitor, Smartphone
 
 
 # Create your views here.
+
+@api_view(['GET', 'POST', 'DELETE'])
+def get_list_of_phone(request):
+    if request.method == 'GET':
+        tutorials = Smartphone.objects.all()
+
+        if request.method == 'GET':
+            tutorials_serializer = CombinedSmartphoneSerializer(tutorials, many=True)
+            return Response(tutorials_serializer.data)
+
+@api_view(['GET', 'POST', 'DELETE'])
+def get_list_of_monitor(request):
+    if request.method == 'GET':
+        tutorials = Monitor.objects.all()
+
+        if request.method == 'GET':
+            tutorials_serializer = CombinedProductsSerializer(tutorials, many=True)
+            return Response(tutorials_serializer.data)
 
 @api_view(['GET', 'POST', 'DELETE'])
 def get_list(request):
     if request.method == 'GET':
         tutorials = SulpakSmartphones.objects.all()
 
-        tutorials_serializer = SulpakSmartphonesSerializer(tutorials, many=True)
-        return Response(tutorials_serializer.data, safe=False)
+        if request.method == 'GET':
+            tutorials_serializer = SulpakSmartphonesSerializer(tutorials, many=True)
+            return Response(tutorials_serializer.data)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
