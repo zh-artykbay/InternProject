@@ -1,4 +1,4 @@
-from selenium import webdriver
+"""from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 #from app.models import SulpakSmartphones, SulpakSmartphonesHistory
@@ -26,7 +26,7 @@ def scrape(urls):
             print("Timeout Error")
             driver.quit()
 
-        '''try:
+        try:
             for item in count_items:
                 name = item.find_element_by_css_selector('div.q-pt-xs q-px-sm').strip()
 
@@ -36,7 +36,7 @@ def scrape(urls):
                     print(name.text)
                     print(price.text)
 
-                    """try:
+                    try:
                         smartphone = SulpakSmartphones.objects.get(name=name.text)
                     except:
                         smartphone = False
@@ -52,12 +52,12 @@ def scrape(urls):
                         new_item.save()
 
                         new_item_history = SulpakSmartphonesHistory(phone_id=new_item, price=price.text)
-                        new_item_history.save()"""
+                        new_item_history.save()
                 else:
                     break
 
         except Exception as e:
             raise e
             driver.quit()
-'''
-scrape(urls)
+
+scrape(urls)"""

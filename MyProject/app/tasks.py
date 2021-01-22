@@ -22,18 +22,38 @@ from app.TechnodomCrawler.ScraperForTechnodomTablet import scrape_technodom
 from app.TechnodomCrawler.ScraperForTechnodomTV import scrape_technodom
 from app.TechnodomCrawler.ScraperForTechnodomVRglass import scrape_technodom
 
+from app.ShopkzCrawler.ScraperForShopkzCamera import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzPrinter import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzSmartphones import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzMonitor import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzTV import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzHeadphones import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzPowerbank import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzSmartWatch import scrape_Shopkz
+from app.ShopkzCrawler.ScraperForShopkzTablet import scrape_Shopkz
+
+from app.MatchingItems import test
 
 from celery.utils.log import get_task_logger
 
-logger = get_task_logger(__name__)
 
+logger = get_task_logger(__name__)
 
 @shared_task
 def scrape_Technodom():
     return scrape_technodom()
 
+
+@shared_task
+def scrape_Shopkz():
+    return scrape_Shopkz()
+
+
 @shared_task(bind=True)
 def scrape_Sulpak():
-    #logger.info(self.request.id)
     return scrape()
 
+
+@shared_task(bind=True)
+def Matching_items():
+    return test()

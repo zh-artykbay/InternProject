@@ -32,5 +32,13 @@ app.conf.beat_schedule = {
         'task': 'app.tasks.scrape_Sulpak',
         'schedule': crontab(minute='*/59'),
     },
+    'third-task': {
+        'task': 'app.tasks.scrape_Shopkz',
+        'schedule': crontab(minute='*/59'),
+    },
+    'forth-task': {
+        'task': 'app.tasks.Matching_items',
+        'schedule': crontab(hour='*/2'),
+    },
 }
 #celery -A MyProject worker -l info
